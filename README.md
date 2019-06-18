@@ -1,4 +1,4 @@
-## Correr Hadoop cluster dentro de containers Docker
+## Ejecutar cluster de Hadoop dentro de containers Docker
 
 
 ### Cluster de 3 nodos
