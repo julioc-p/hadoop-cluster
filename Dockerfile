@@ -2,21 +2,21 @@ FROM ubuntu:latest
 
 WORKDIR /root
 
-# install openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y openssh-server openjdk-12-jdk wget
+# instalar openssh-server, openjdk and wget
+RUN apt-get update && apt-get install -y openssh-server openjdk-11-jdk wget
 
-# install hadoop 3.1.1
-RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-3.1.1-src.tar.gz && \
-    tar -xzvf hadoop-3.1.1-src.tar.gz && \
-    mv hadoop-3.1.1 /usr/local/hadoop && \
-    rm hadoop-3.1.1.tar.gz
+# instalar hadoop 3.2.0
+RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-3.2.0.tar.gz && \
+    tar -xzvf hadoop-3.2.0-src.tar.gz && \
+    mv hadoop-3.2.0 /usr/local/hadoop && \
+    rm hadoop-3.2.0.tar.gz
 
-# set environment variable
-ENV JAVA_HOME=/usr/lib/jvm/java-12-openjdk-amd64 
+# configurar variable de ambiente de java
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
 ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
 
-# ssh without key
+# configurar ssh sin key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
     cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
@@ -41,7 +41,7 @@ RUN chmod +x ~/start-hadoop.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh 
 
-# format namenode
+# formatear nodo maestro
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]
