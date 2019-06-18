@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y openssh-server openjdk-11-jdk wget
 
 # instalar hadoop 3.2.0
 RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-3.2.0.tar.gz && \
-    tar -xzvf hadoop-3.2.0-src.tar.gz && \
+    tar -xzvf hadoop-3.2.0.tar.gz && \
     mv hadoop-3.2.0 /usr/local/hadoop && \
     rm hadoop-3.2.0.tar.gz
 
