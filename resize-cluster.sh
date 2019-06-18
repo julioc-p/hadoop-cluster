@@ -23,6 +23,6 @@ echo ""
 echo -e "\nconstruir imagen docker hadoop\n"
 
 # reconstruir imagen juliop1980/hadoop-cluster
-sudo docker build -t kiwenlau/hadoop-cluster .
+sudo docker build -t juliop1980/hadoop-cluster .
 
 echo ""
