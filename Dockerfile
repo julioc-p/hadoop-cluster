@@ -1,18 +1,18 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 
 WORKDIR /root
 
 # instalar openssh-server, openjdk and wget
-RUN apt-get update && apt-get install -y openssh-server openjdk-8-jdk wget
+RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget
 
 # instalar hadoop 3.2.0
-RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-3.2.0.tar.gz && \
-    tar -xzvf hadoop-3.2.0.tar.gz && \
-    mv hadoop-3.2.0 /usr/local/hadoop && \
-    rm hadoop-3.2.0.tar.gz
+RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-2.7.2.tar.gz && \
+    tar -xzvf hadoop-2.7.2.tar.gz && \
+    mv hadoop-2.7.2 /usr/local/hadoop && \
+    rm hadoop-2.7.2.tar.gz
 
 # configurar variable de ambiente de java
-ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
+ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
 ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
 
