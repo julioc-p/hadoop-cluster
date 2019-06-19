@@ -26,7 +26,7 @@ do
 	                --net=hadoop \
 	                --name hadoop-slave$i \
 	                --hostname hadoop-slave$i \
-	                kiwenlau/hadoop:1.0 &> /dev/null
+	                juliop1980/hadoop-cluster &> /dev/null
 	i=$(( $i + 1 ))
 done 
 
