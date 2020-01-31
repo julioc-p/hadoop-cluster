@@ -55,9 +55,3 @@ RUN chmod +x ~/start-hadoop.sh && \
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]
-
-#instalar hbase
-RUN wget http://archive.apache.org/dist/hbase/1.2.2/hbase-1.2.2-bin.tar.gz && \
-    tar -xzvf hbase-1.2.2-bin.tar.gz && \
-    mv hadoop-2.7.2 /usr/local/hadoop && \
-    rm hadoop-2.7.2.tar.gz
