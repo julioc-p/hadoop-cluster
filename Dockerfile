@@ -16,7 +16,7 @@ RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/ha
     tar -xzvf pig-0.17.0-src.tar.gz && \
     mv pig-0.17.0 /usr/local/pig && \
     mv pig-0.17.0-src /usr/local/pig && \
-    rm pig-0.17.0.tar.gz
+    rm pig-0.17.0.tar.gz && \
     rm pig-0.17.0-src.tar.gz
 
 # configurar variable de ambiente de java
