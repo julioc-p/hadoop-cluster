@@ -9,12 +9,22 @@ RUN apt-get update && apt-get install -y openssh-server openjdk-7-jdk wget
 RUN wget https://github.com/Juliop1980/compilar-hadoop/releases/download/v1.0/hadoop-2.7.2.tar.gz && \
     tar -xzvf hadoop-2.7.2.tar.gz && \
     mv hadoop-2.7.2 /usr/local/hadoop && \
-    rm hadoop-2.7.2.tar.gz
+    rm hadoop-2.7.2.tar.gz && \
+    wget https://www-us.apache.org/dist/pig/pig-0.17.0/pig-0.17.0.tar.gz && \
+    wget https://www-us.apache.org/dist/pig/pig-0.17.0/pig-0.17.0-src.tar.gz && \
+    tar -xzvf pig-0.17.0.tar.gz && \
+    tar -xzvf pig-0.17.0-src.tar.gz && \
+    mv pig-0.17.0 /usr/local/pig && \
+    mv pig-0.17.0-src /usr/local/pig && \
+    rm pig-0.17.0.tar.gz
+    rm pig-0.17.0-src.tar.gz
 
 # configurar variable de ambiente de java
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64 
 ENV HADOOP_HOME=/usr/local/hadoop 
-ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin 
+ENV PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin:/usr/local/pig/bin
+ENV PIG_HOME=/usr/local/pig
+ENV PIG_CLASSPATH = $HADOOP_HOME/conf
 
 # configurar ssh sin key
 RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
@@ -45,3 +55,9 @@ RUN chmod +x ~/start-hadoop.sh && \
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ "sh", "-c", "service ssh start; bash"]
+
+#instalar hbase
+RUN wget http://archive.apache.org/dist/hbase/1.2.2/hbase-1.2.2-bin.tar.gz && \
+    tar -xzvf hbase-1.2.2-bin.tar.gz && \
+    mv hadoop-2.7.2 /usr/local/hadoop && \
+    rm hadoop-2.7.2.tar.gz
