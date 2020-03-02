@@ -14,9 +14,5 @@
         <name>dfs.replication</name>
         <value>2</value>
     </property>
-<property>
-     <name>dfs.http.address</name>
-     <value>10.32.0.1:50070</value>
-</property>
 
 </configuration>
